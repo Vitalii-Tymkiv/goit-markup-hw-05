@@ -727,39 +727,63 @@ ul {
   color: var(--title-text-color);
 }
 
-.benefits-card {
-  padding: 20px 24px;
-  border-right: 1px solid #eeeeee;
-  border-left: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
-}
-
+/*----------------PORTFOLIO CARDS-----------------*/
 .portfolio-link:hover,
 .portfolio-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
-/*----------------benefits-thumb----------------*/
-/* .benefits-thumb {
+
+.portfolio-link {
+  height: 404px;
   position: relative;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
-.benefits-thumb::before {
+.benefits-card {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 24px;
+  border-right: 1px solid #eeeeee;
+  border-left: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+  background-color: #ffffff;
+  z-index: 2;
+}
+
+.portfolio-link::after {
   content: "";
   position: absolute;
+  top: 0;
+  transform: translateY(100%);
   width: 100%;
-  height: 100%;
+  height: 294px;
   background-color: rgba(33, 150, 243, 0.9);
   opacity: 0;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.portfolio-link:hover::after,
+.portfolio-link:focus::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-link:hover .benefits-hover-text,
+.portfolio-link:focus .benefits-hover-text {
+  transform: translateY(0);
 }
 
 .benefits-hover-text {
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
+  transform: translateY(100%);
   height: 100%;
-  opacity: 0;
   padding: 63px 24px;
   font-family: "Roboto";
   font-style: normal;
@@ -768,89 +792,8 @@ ul {
   line-height: 1.56;
   letter-spacing: 0.03em;
   color: var(--primary-background-color);
-}
-
-.benefits-thumb:hover::before,
-.benefits-thumb:focus::before {
-  opacity: 1;
-}
-
-.benefits-thumb:hover .benefits-hover-text,
-.benefits-thumb:focus .benefits-hover-text {
-  opacity: 1;
-} */
-
-/* .benefits-thumb:hover .benefits-link,
-.benefits-thumb:focus .benefits-link {
-  opacity: 1;
-} */
-
-/* .portfolio-link:hover,
-.portfolio-link:focus {
-  opacity: 1;
-}
-*/
-
-.portfolio-link {
-  position: relative;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* .portfolio-link::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 294px;
-  background-color: rgba(33, 150, 243, 0.9);
-  opacity: 0;
-  transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1);
-} */
-
-.portfolio-link::after {
-  content: "";
-  position: absolute;
-  top: 294px;
-  width: 100%;
-  height: 294px;
-  background-color: rgba(33, 150, 243, 0.9);
-  opacity: 0;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1;
-}
-/* 
-.portfolio-link:hover::before,
-.portfolio-link:focus::before {
-  opacity: 1;
-  transform: translateY(295px);
-} */
-
-.portfolio-link:hover::after,
-.portfolio-link:focus::after {
-  opacity: 1;
-  transform: translateY(-294px);
-}
-
-.portfolio-link:hover .benefits-hover-text,
-.portfolio-link:focus .benefits-hover-text {
-  opacity: 1;
-  transform: translateY(-294px);
-}
-.benefits-hover-text {
-  position: absolute;
-  top: 294px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  padding: 63px 24px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.56;
-  letter-spacing: 0.03em;
-  color: var(--primary-background-color);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
 }
 
@@ -859,16 +802,19 @@ ul {
   position: fixed;
   top: 0;
   left: 0;
+  opacity: 1;
+  transform: scaleX(1) scaleY(1);
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
   opacity: 0;
+  transform: scaleX(0) scaleY(0);
   pointer-events: none;
-  visibility: hidden;
 }
 
 .modal {
