@@ -806,6 +806,7 @@ ul {
   transform: scaleX(1) scaleY(1);
   width: 100vw;
   height: 100vh;
+  pointer-events: none;
   background-color: rgba(0, 0, 0, 0.2);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -814,7 +815,7 @@ ul {
 .backdrop.is-hidden {
   opacity: 0;
   transform: scaleX(0) scaleY(0);
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .modal {
@@ -827,6 +828,7 @@ ul {
   align-items: flex-start;
   width: 528px;
   height: 581px;
+  pointer-events: all;
   background-color: var(--primary-background-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
